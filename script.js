@@ -1,3 +1,29 @@
+function loadingAnim() {
+  gsap.set(".navbar", { yPercent: -200, opacity: 0 });
+  gsap.to(".navbar", {
+    yPercent: 0,
+    opacity: 1,
+    ease: Power4,
+    duration: 1,
+  });
+
+  var clutter = "";
+  document
+    .querySelector(".extra")
+    .textContent.split("")
+    .forEach(function (e) {
+      if (e === " ") clutter += `<span></span>`;
+      clutter += `<span>${e}</span>`;
+    });
+  document.querySelector(".extra").innerHTML = clutter;
+  gsap.set(".extra span", { opacity: 0.1 });
+  gsap.to(".extra span", {
+    opacity: 1,
+    stagger: 0.01,
+    ease: Power1,
+  });
+}
+loadingAnim();
 function HomepageAnim() {
   gsap.set(".slidesm", { scale: 9 });
   gsap.set(".heading", { opacity: 0 });
